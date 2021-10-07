@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-image: url("/img/Ellipse\ 1.png"), url("/img/Ellipse\ 2.png");
+    background-repeat: no-repeat;
+    background-position: -135px 323px, 838px 0px;
+}
+.login {
+    width: 880px;
+    height: 622px;
+    background-color: aquamarine;
+    position: relative;
+    left: 25vw;
+    top: 10vh;
+}
+.login img {
+    object-fit: cover;
+    width: 440px;
+    height: 622px;
+    position: absolute;
+}
+
+.log {
+    position: absolute;
+    left: 62px;
+    width: 300px;
+    height: 622px;
+}
+.login #right-login {
+    position: absolute;
+    background-color: white;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    color: rgba(0, 0, 0, 0.73);
+}
+.login #right-login h1 {
+    position: absolute;
+    top: 132px;
+    font-size: 36px;
+}
+
+.login #right-login #text-ingresar {
+    position: absolute;
+    top: 178px;
+}
+
+.login #right-login #id {
+    position: absolute;
+    top: 250px;
+}
+
+.login #right-login #pass {
+    position: absolute;
+    top: 319px;
+}
+
+.button {
+    background-color: #74B9FF;
+    color: white;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #5794d1;
+    
+}
+
+.login #right-login #button {
+    position: absolute;
+    border: none;
+    border-radius: 5px;
+    height: 43px;
+    width: 318px;
+    top: 388px;
+}
+
+.login .inpt {
+    background: rgba(196, 196, 196, 0.26);
+    border: none;
+    border: 2px solid #74B9FF;
+    border-radius: 4px;
+    height: 43px;
+    width: 318px;
+}
+
+.login #right-login #singup {
+    text-align: center;
+    margin-top: 536px;
+}
+
+.login #right-login #singup a{
+    text-decoration: none;
+    color: rgba(0, 117, 255, 0.69);
+}
+
+
+
+/* Eliminar flechas de input type number */
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type=number] { -moz-appearance:textfield; }
+
+/* ####################################### */
