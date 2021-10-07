@@ -137,6 +137,14 @@ main.register header #adve {
     border: 1px solid #C6C5C5;
 }
 
+nav {
+    position: absolute;
+}
+
+nav a {
+    text-decoration: none;
+    color: #7E7A7A;
+}
 /* Eliminar flechas de input type number */
 
 input[type=number]::-webkit-inner-spin-button,
