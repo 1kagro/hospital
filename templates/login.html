@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="background"></div>
     <div class="login"> 
         <div id="left-login">
-            <img src="img/hospital.jpg" alt="">
+            <img src="{{ url_for('static', filename='img/hospital.jpg') }}" alt="">
         </div>
         <div id="right-login">
             <form action="" method="post" class="log">
@@ -21,7 +20,7 @@
                 <input type="password" name="password" id="pass" placeholder="Contraseña" class="inpt">
                 <button type="submit" class="button" id="button">Ingresar</button>
             </form>
-            <p id="singup">¿No tienes cuenta? <a href="/register.html">Registrate</a></p>
+            <p id="singup">¿No tienes cuenta? <a href="{{ url_for('register') }}">Registrate</a></p>
         </div>
     </div>
 </body>
