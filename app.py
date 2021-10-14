@@ -35,5 +35,10 @@ def user():
     #user_id = request.form['id']
     return render_template('perfil.html')
 
+@app.route('/agendar', methods=['GET', 'POST'])
+def agendar():
+    #user_id = request.form['id']
+    return render_template('agendar.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
