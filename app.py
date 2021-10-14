@@ -40,5 +40,9 @@ def agendar():
     #user_id = request.form['id']
     return render_template('agendar.html')
 
+@app.route('/dashboard1', methods=['GET', 'POST'])
+def dashboard1():
+    return render_template('dash1.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

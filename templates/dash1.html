@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=
+    , initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dash1.css') }}">
+    
+</head>
+<body>
+    
+    <div id="pantalla" >
+        
+        <div class="columna" ></div>
+        <section class="workspace">
+            <section class="encabezado">
+                <h1 id="l1">Dashboard</h1>
+                <h1 id="l2">Bienvenido a Hospital ESE</h1>
+                <h4 id="l3" >Dashboard Administrativo del Hospital San Blas ESE</h4>
+            </section>
+            
+            <section class="contenedor" >
+                <div id="sect1" >                    
+                    <div id="s1Col1" >
+                        <p id="textico">Total de pacientes</p>
+                        <p>513k</p>
+                    </div>
+                    <div id="s1Col2" >
+                        <p id="textico">Medico</p>
+                        <p>20</p>
+                    </div>
+                    <div id="s1Col3" >
+                        <p id="textico">Cita</p>
+                        <p>285</p>
+                    </div>
+                    <div id="s1Col4" >
+                        <p id="textico">Ganancias</p>
+                        <p>989k</p>
+                    </div>
+                </div>
+                <div id="sect2" >
+                    <img src="{{ url_for('static', filename='/img/dash1.png') }}" alt="">
+                </div>               
+            </section>
+
+        </section>
+        
+       
+    </div>
+    
+</body>
+</html>

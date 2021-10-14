@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#pantalla{
+    width: 100%;
+    height: 100vh;    
+    background-color: #a5b5b6;
+    display: flex;
+     
+}
+
+.workspace{
+    display: block;
+}
+
+.encabezado{
+    display: block;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(56, 86, 141);
+}
+
+#l1{
+    font-size: 48px;    
+}
+#l2{
+    font-size: 24px;
+    padding-top: 35px;
+}
+#l3{
+    font-size: 18px;
+    padding-top: 20px;
+}
+.columna{
+    width: 40px;
+    height: 100vh;    
+    background-color: #e3ecec;
+    border: solid;
+    border-top: none;    
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor{
+    width: 100%;
+    height: 555px;    
+    display: block;
+}
+#sect1{
+    margin-left: 60px;    
+    width: 1300px;
+    height: 40%;
+    display: flex;
+    text-align: center;
+    vertical-align: center;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+    
+    
+}
+#s1Col1{
+    width: 25%;
+    border-radius: 20px;
+    border: solid;
+    margin: 20px;
+    vertical-align: auto;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 70px;
+    background-color: red;
+
+}
+#s1Col2{
+    width: 25%;
+    border-radius: 20px;
+    border: solid;
+    margin: 20px;
+    vertical-align: auto;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 70px;
+    background-color: aqua;
+}
+#s1Col3{
+    width: 25%;
+    border-radius: 20px;
+    border: solid;
+    margin: 20px;
+    vertical-align: auto;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 70px;
+    background-color: aquamarine;
+}
+#s1Col4{
+    width: 25%;
+    border-radius: 20px;
+    border: solid;
+    margin: 20px;
+    vertical-align: auto;
+    text-align: left;
+    padding-top: 20px;
+    padding-left: 20px;
+    font-size: 70px;
+    background-color:orange
+}
+#textico{
+    vertical-align: auto;
+    text-align: left;
+    padding-top: 10px;
+    padding-left: 14px;
+    font-size: 14px;
+}
+#sect2{
+    margin-left: 60px;    
+    width: 1300px;
+    height: 60%;
+}
+
+#sect2{
+    width: 100%;
+    height: 100%;
+}
