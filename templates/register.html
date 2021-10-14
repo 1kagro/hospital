@@ -24,7 +24,7 @@
                 <hr class="linea">
                 <label for="name">Nombre completo</label>
                 <br />
-                <input type="text" placeholder="Nombre completo" id="name" class="inpt-reg" maxlength="40" required pattern="^[a-zA-ZÀ-ÿ\s]{1,40}$" title="No se permiten números">
+                <input type="text" name="name" placeholder="Nombre completo" id="name" class="inpt-reg" maxlength="40" required pattern="^[a-zA-ZÀ-ÿ\s]{1,40}$" title="No se permiten números">
                 <br />
                 <label for="tipo-id">Tipo de documento de identidad</label>
                 <br />
@@ -52,17 +52,19 @@
                 <br />
                 <label for="celular">Celular</label>
                 <br />
-                <input type="number" name="celular" id="calular" placeholder="Número de celular" class="inpt-reg" minlength="10" required>
+                <input type="number" name="celular" id="celular" placeholder="Número de celular" class="inpt-reg" minlength="10" required>
                 <p>Contraseña</p>
                 <hr class="linea">
                 <label for="pass">Contraseña</label>
-                <input type="password" name="pass" id="pass" placeholder="Contraseña" class="inpt-reg"  alt="strongPass" required pattern="^.{4,12}$">
+                <input type="password" name="pass" id="pass" placeholder="Contraseña" class="inpt-reg"  alt="strongPass" required pattern="^.{4,12}$" title="Debe contener de 4 a 12 caracteres">
                 <label for="pass2">Confirmar contraseña</label>
-                <input type="password" name="pass2" id="pass2" placeholder="Confirmar contraseña" class="inpt-reg"  required>
+                <input type="password" name="pass2" id="pass2" placeholder="Confirmar contraseña" class="inpt-reg"  required pattern="^.{4,12}$" title="Debe contener de 4 a 12 caracteres">
                 <br />
-                <input type="submit" value="Registrar" class="button">
+                <input type="submit" value="Registrar" class="button" onclick="checkpass()">
             </form>
         </section>
     </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
