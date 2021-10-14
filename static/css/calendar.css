@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #EFFFF4;
+}
+
+nav {
+    height: 50px;
+    background-color: white;
+    text-align: end;
+    padding: 15px;
+    padding-right: 50px;
+}
+nav ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #59B661;
+    position: absolute;
+    height: 40px;
+    border-radius: 22px;
+    padding: 11px;
+    color: white;
+}
+
+.cont {
+    position: absolute;
+    border: 2px solid whitesmoke;
+    background-color: white;
+    border-radius: 22px;
+}
+.calendar {
+    width: 327px;
+    height: 365px;
+    margin-left: 142px;
+    margin-top: 10px;
+}
+
+.calendar-info {
+    width: 700px;
+    height: 365px;
+    margin-left: 572px;
+    margin-top: 10px;
+}
+
+.comentario {
+    width: 1129px;
+    height: 200px;
+    margin-top: 402px;
+    margin-left: 142px;
+}
