@@ -1,11 +1,25 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, redirect
 
 app = Flask(__name__)
 
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template('login.html')
+    if request.method == 'POST':
+        n_id = int(request.form['id'])
+        password = request.form['password']
+        
+        if((n_id == 12345678) and (password == "Usuario1")):
+            return redirect(url_for('user'))
+        elif((n_id == 99999999) and (password == "Administrador1")):
+            return redirect(url_for('dashboard'))
+        else:
+            return render_template('login.html')
+    else:
+        return render_template('login.html')
 
+
+    
 # @app.route('/login', methods=['GET', 'POST'])
 # def login():
 #     return render_template('login.html')

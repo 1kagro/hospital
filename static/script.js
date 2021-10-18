@@ -1,5 +1,4 @@
 console.log("hola");
-checkpass();
 
 function checkpass() {
     let pass = select_id('pass').value;
@@ -10,6 +9,16 @@ function checkpass() {
         alert("Las contraseñas no coinciden, intente nuevamente")
     }
 }
+
+function checkUserPass() {
+    let user_id = select_id('id').value;
+    let password = select_id('pass').value;
+    if (user_id == 123) {
+        console.log("a")
+        window.location.href = '../templates/dashboard.html'
+    }
+}
+
 
 function select_id(id) {
     return document.getElementById(id);
