@@ -7,6 +7,13 @@ body{
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #EFFFF4;
 }
+.encabezado{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+#principal{
+    text-align: left;
+}
 
 nav {
     height: 50px;
@@ -20,6 +27,19 @@ nav ul {
 }
 a {
     text-decoration: none;
+}
+#Bienvenido{
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+#Bienvenido-izq{
+    text-align: right;
+    margin-right: 10px;
+    font-weight: bold;
+}
+#Bienvenido-der{
+    text-align: left;    
+    font-weight: bold;
 }
 
 .btn {
@@ -38,15 +58,41 @@ a {
     text-align: center;
 }
 
+
 .user {
     position: absolute;
     margin: auto;
     margin-top: 112px;
-    width: 700px;
+    width: 600px;
     margin-left: 30px;
-    height: 349px;
+    height: 220px;
     background-color: white;
     border-radius: 22px;
+    border-width: 1px;
+    border: solid;
+    padding-left: 20px;
+}
+.historiaClinica {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 50px 50px 120px;
+    margin: auto;
+    margin-top: 112px;
+    width: 700px;
+    margin-left: 700px;
+    height: 220px;
+    background-color:white;
+    border-radius: 22px;
+    border-width: 1px;
+    border: solid;
+    padding-left: 20px;
+}
+#l2{
+    font-weight: bold;
+}
+#l2, #l3{
+    display: grid;
+    grid-template-columns: 30% 70%;
 }
 
 .img-user {
@@ -59,32 +105,40 @@ a {
     border-radius: 22px;
 }
 
-.user-info {
-    margin-left: 200px;
-}
-
-
-.user p#name {
+.user #name {
     margin-top: 21px;
     font-size: 26px;
     font-weight: 600;
 }
+#phone, #emailLogo{
+    width: 20px;
+    height: 20px;
+}
+
+
+.user #edad, #sexo, #telefono, #email, #date{
+    margin-top: 12px;
+}
+.user #telefono, #email{
+    display: grid;
+    grid-template-columns: 30px 150px;
+}
 
 .tags {
     position: absolute;
-    margin-top: 25px;
-    margin-left: 200px;
+    margin-top: 25px;    
 }
 .tags p {
     background: rgba(60, 198, 99, 0.1);
     border-radius: 18px;
 }
 .linea {
-    border: 1px solid #C6C5C5;
-    margin-top: 138px;
+    border: 1px solid #C6C5C5;    
 }
 
-/* --------------- Izq ----------------*/
+
+
+--------------- Izq ----------------
 .left {
     position: absolute;
     margin-left: 60px;
@@ -101,13 +155,13 @@ a {
     margin-left: 50%;
     margin-top: 10px;
 }
-.map {
+/* .map {
     /* position: absolute; */
     width: 310px;
     height: 100px;
     background-color: #F1F1F1;
-}
-.full-screen {
+} */
+/* .full-screen {
     position: absolute;
     border-radius: 22px;
     background-color: #3CC663;
@@ -116,10 +170,10 @@ a {
     width: 70%;
     top: 88px;
     color: white;
-}
+} */
 
 
-
+/* 
 .doctor {
     position: absolute;
     height: 214px;
@@ -128,7 +182,7 @@ a {
     margin-left: 30px;
     background-color: white;
     border-radius: 22px;
-}
+} */
 
 .doctor .btn{
     margin-left: 635px;
@@ -138,30 +192,38 @@ p#esp {
     color: #3CC663;
 }
 
-
-.historiaClinica.user {
-    width: 600px;
-    margin-left: 800px;
+.historiaClinica p {
+    margin-top: 20px;
 }
 .tittle {
-    margin-top: 22px;
-    margin-left: 38px;
+    margin-top: 10px;
+    margin-right: 20px;
+    text-align: center;
     font-size: 26px;
     font-weight: 600;
+    border-bottom: 1px;
+    border: solid;
+    padding-right: 20px;
 }
-.historiaClinica p {
-    margin-top: 30px;
-    margin-left: 65px;
+.historiaCitas {
+    position: absolute;
+    display: grid;
+    grid-template-rows: 50px 50px 125px;
+    margin: auto;
+    margin-top: 370px;
+    margin-left: 30px;
+    width: 96%;
+    height: 225px;
+    background-color:white;
+    border-radius: 22px;
+    border-width: 1px;
+    border: solid;
+    padding-left: 20px;
 }
-
-.notas {
-    width: 600px;
-    margin-left: 800px;
-    background: #676565;
-    color: white;
+#linea2{
+    font-weight: bold;
 }
-
-.notas p#text {
-    margin-left: 38px;
-    margin-top: 25px;
+#linea2, #linea3{
+    display: grid;
+    grid-template-columns: 20% 20% 30% 30%;   
 }

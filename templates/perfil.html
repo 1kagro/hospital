@@ -8,60 +8,75 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
 </head>
 <body>
-    <nav>
-        <ul>
-            <li id="user-name"><a href="">Nombre de usuario</a></li>
-        </ul>
-    </nav>
+    <div class="encabezado">
+        <nav id="principal">
+            <a href="{{ url_for('home') }}"><img src="" alt=""> Principal </a>
+            <span>/ Perfil de Usuario</span>
+        </nav>
+        <nav>
+            <ul id="Bienvenido" >
+                <p id="Bienvenido-izq" >Bienvenido</p>
+                <p  id="Bienvenido-der">Fabián Lozano</p>
+            </ul>
+        </nav>
+    </div>
+
+  
     <main>
         <a href="{{ url_for('agendar') }}"><p class="btn" id="s-cita">Solicitar cita</p></a>
+        
         <div class="user">
-            <div class="img-user">
-                <img src="" alt="Foto de perfil del usuario">
+    
+            <p id="name" class="user-info">Fabián Lozano</p>
+            <p id="edad" class="user-info">19 años</p>
+            <p id="sexo" class="user-info">Masculino</p>
+            <div id="telefono">
+                <img id="phone" src="{{ url_for('static', filename='img/telefono.png') }}" alt="">
+                <p class="user-info">3014603204</p>
             </div>
-            <p id="name" class="user-info">Nombre de usuario</p>
-            <p id="date" class="user-info">Fecha de ingreso</p>
-            <div class="tags" class="user-info">
-                <p>Masculino</p>
+            <div id="email">
+                <img id="emailLogo" src="{{ url_for('static', filename='img/email.png') }}" alt="">
+                <p class="user-info">flozano@uninorte.edu.co</p>
             </div>
-            <hr class="linea">
-            <div class="left">
-                <p class="soft">Dirección</p>
-                <p>123 Fake Av, Suit 245 <br />
-                Barranquilla,<br />
-                CP 080014</p>
-                <div class="soft">Celular</div>
-                <p>+57 0123456879</p>
+            <p id="date" class="user-info">10/12/2020</p>
+        </div>
+
+        <div class="historiaClinica">
+            <div id="l1">
+                <p class="tittle">Historia Clinica</p>
             </div>
-            <div class="right">
-                <div class="map"></div>
-                <div class="full-screen">
-                    <p>Ver en pantalla completa</p>
-                </div>
+            <div id="l2">
+                <p>Fecha</p>
+                <p>Motivo</p>
+            </div>
+            <div id="l3">
+                <p>15/03/2021</p>
+                <p>Diabetes</p>
             </div>
         </div>
-        <div class="historiaClinica user">
-            <p class="tittle">Historia Clinica</p>
-            <p>Diabetes</p>
-            <p>Diabetes</p>
-            <p>Diabetes</p>
-        </div>
-        <div class="doctor user">
-            <div class="img-user">
-                <img src="" alt="Foto de perfil del docotr">
+        <div class="historiaCitas">
+            <div id="l1">
+                <p class="tittle">Historial de Citas</p>
             </div>
-            <p id="name" class="user-info">Nombre de Doctor</p>
-            <p id="date" class="user-info">Enfermero</p>
-            <p class="btn">5.0</p>
+            
+
+            <div id="linea2">
+                <p>Fecha</p>
+                <p>Hora</p>
+                <p>Medico asignado</p>
+                <p>Motivo</p>
+            </div>
+            <div id="linea3">
+                <p>15/05/2021</p>
+                <p>9:00</p>
+                <p>Yexalen Lineros</p>
+                <p>Diabetes</p>
+            </div>
+
         </div>
-        <div class="notas doctor">
-            <p class="tittle">Notas del medico para el paciente</p>
-            <p id="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Error eaque, ratione debitis culpa distinctio corporis, 
-                quisquam iusto, odio facere reiciendis laborum temporibus 
-                dicta quasi. Consequatur cupiditate necessitatibus omnis 
-                ducimus doloremque!</p>
-        </div>
+            
+        
+      
     </main>
 </body>
 </html>
