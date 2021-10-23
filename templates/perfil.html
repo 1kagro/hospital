@@ -22,20 +22,22 @@
                 <img src="" alt="Foto de perfil del usuario">
             </div>
             {% if info %}
-            <p id="name" class="user-info">{{ info[0][0] + " " + info[0][1] }}</p>
+                <p id="name" class="user-info">{{ info[0][0] + " " + info[0][1] }}</p>
             {% endif %}
-            <p id="date" class="user-info">Fecha de ingreso</p>
+            <p id="date" class="user-info">{{ info[0][8] }}</p>
             <div class="tags" class="user-info">
-                <p>Masculino</p>
+                <p>{{ info[0][5] }} años</p>
+                <p>{{ info[0][6] }}</p>
             </div>
             <hr class="linea">
             <div class="left">
-                <p class="soft">Dirección</p>
-                <p>123 Fake Av, Suit 245 <br />
-                Barranquilla,<br />
-                CP 080014</p>
+                <p class="soft">Contacto</p>
                 <div class="soft">Celular</div>
-                <p>+57 0123456879</p>
+                <p>{{ info[0][9] }}</p>
+                <div class="soft">Correo electronico</div>
+                <p> {{ info[0][7] }} </p>
+                <div class="soft">Fecha de ingreso</div>
+                <p> {{ info[0][8] }} </p>
             </div>
             <div class="right">
                 <div class="map"></div>
@@ -51,12 +53,14 @@
             <p>Diabetes</p>
         </div>
         <div class="doctor user">
+            {% if info2 %}
             <div class="img-user">
                 <img src="" alt="Foto de perfil del docotr">
             </div>
-            <p id="name" class="user-info">Nombre de Doctor</p>
+            <p id="name" class="user-info">{{ info2[0][0] + " " + info2[0][1] }}</p>
             <p id="date" class="user-info">Enfermero</p>
             <p class="btn">5.0</p>
+            {% endif %}
         </div>
         <div class="notas doctor">
             <p class="tittle">Notas del medico para el paciente</p>

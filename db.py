@@ -83,16 +83,19 @@ def registrarP(nombre, t_id, n_id, birthday, email, phone_number, passw):
         nombres = nombre_v[0]
         apellidos = ""
     
+    fech_ingreso = str(date.today().year) + "-" + str(date.today().month) + "-" + str(date.today().day)
+    
+    print(fech_ingreso)
     passhash = generate_password_hash(passw, method='pbkdf2:sha256', salt_length=8)
     
     edad = age(birthday)
     print(consultarTabla("pacientes", "IDp = {}".format(n_id)))
     if consultarTabla("pacientes", "IDp = {}".format(n_id)) == []:
-        query = 'INSERT INTO pacientes (nombres, apellidos, tipoID, IDp, "password", edad, sexo, email) VALUES ("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")'.format(nombres, apellidos, t_id, n_id, passhash, edad, "NA", email)
+        query = 'INSERT INTO pacientes (nombres, apellidos, tipoID, IDp, "password", edad, sexo, email, fech_ingreso) VALUES ("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")'.format(nombres, apellidos, t_id, n_id, passhash, edad, "NA", email, fech_ingreso)
         cursor.execute(query)
         conexion.commit()
-        session['id'] = query["IDp"]
-        session['email'] = query["email"]
+        session['id'] = query[0][3]
+        session['email'] = query[0][7]
     else:
         print("error, cedula registrada")
     conexion.close()

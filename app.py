@@ -24,16 +24,24 @@ def home():
                 session['id'] = query[0][3]
                 session['email'] = query[0][7]
                 print(query)
+                query2 = db.consultarTabla("medicos", "IDp = {}".format(n_id))
+                print(query2)
+                
                 #return redirect(url_for('user', info = query))
-                return render_template('perfil.html', info = query)
+                return render_template('perfil.html', info = query, info2 = query2)
+            else:
+                error = 'Usuario y/o contraseña inválida'
         else:
-            error = 'Usuario y/o contraseña inválida'
             query = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
+            passwordbd = query[0][4]
+            
             if query != []:
-                session['loggedin'] = True
-                session['id'] = query[0][3]
-                print(query[0][4])
-                return redirect(url_for('dashboard'))
+                if check_password_hash(passwordbd, password):
+                    session['loggedin'] = True
+                    session['id'] = query[0][3]
+                    print(query[0][4])
+                    return render_template('dashboard.html', info = query)
+
         return render_template('login.html', error=error)
         
         """ if((n_id == 12345678) and (password == "Usuario1")):
@@ -46,7 +54,17 @@ def home():
         if 'loggedin' in session:
             n_id = session['id']
             query = db.consultarTabla("pacientes", "IDp = {}".format(n_id))
-            return render_template('perfil.html', info = query)
+            query2 = db.consultarTabla("medicos", "IDm = {}".format(n_id))
+            query3 = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
+            
+            if query != []:
+                query2 = db.consultarTabla("medicos", "IDp = {}".format(n_id))
+                return render_template('perfil.html', info = query, info2 = query2)
+            elif query2 != []:
+                return render_template('perfil.html', info = query)
+            else:
+                return render_template('dashboard.html', info = query3)
+                
         return render_template('login.html')
 
 
