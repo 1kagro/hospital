@@ -18,6 +18,9 @@ nav {
 nav ul {
     list-style: none;
 }
+nav ul li a {
+    margin-left: 44px;
+}
 a {
     text-decoration: none;
 }

@@ -10,7 +10,9 @@
 <body>
     <nav>
         <ul>
-            <li id="user-name"><a href="">Nombre de usuario</a></li>
+            {% if info %}
+            <li id="user-name"><a href="#">{{ info[0][0] }}</a> <a href="{{ url_for('logout') }}">Salir</a></li>
+            {% endif %}
         </ul>
     </nav>
     <main>
@@ -19,7 +21,9 @@
             <div class="img-user">
                 <img src="" alt="Foto de perfil del usuario">
             </div>
-            <p id="name" class="user-info">Nombre de usuario</p>
+            {% if info %}
+            <p id="name" class="user-info">{{ info[0][0] + " " + info[0][1] }}</p>
+            {% endif %}
             <p id="date" class="user-info">Fecha de ingreso</p>
             <div class="tags" class="user-info">
                 <p>Masculino</p>
