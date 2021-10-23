@@ -18,6 +18,8 @@ def home():
         passwordbd = db.consularColumna("password", "pacientes", "IDp = {}".format(n_id))
         query = db.consultarTabla("pacientes", "IDp = {}".format(n_id))
         
+        error = ""
+        
         if passwordbd != []:
             if check_password_hash(passwordbd[0][0], password):
                 session['loggedin'] = True
@@ -121,12 +123,43 @@ def user():
 
 @app.route('/agendar', methods=['GET', 'POST'])
 def agendar():
+    if "loggedin" in session:
+        n_id = session['id']
+        print(n_id)
+        query = db.consultarTabla("pacientes", "IDp = '{}'".format(n_id))
+        query2 = ""
+        if request.method == "POST":
+            
+            esp = request.form.get("tipo-cita")
+            
+            if esp != "":
+                query2 = db.consultarTabla("medicos", "especialidad = '{}'".format(str(esp)))
+                print(query2)
+            
+            print(query)
+            if query != []:
+                nombre = request.form.get('medico')
+                date = request.form.get("datetime-local")
+                if nombre != None:
+                    print(nombre)
+                    db.agendarCita(nombre, esp, date, n_id)
+                return render_template('agendar.html', info = query, medicos = query2)
+        else:
+            return render_template('agendar.html', info = query)
+    return render_template('login.html')
+
     #user_id = request.form['id']
-    return render_template('agendar.html')
+    #return render_template('agendar.html')
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    return render_template('dashboard.html')
+    if "loggedin" in session:
+        n_id = session['id']
+        query3 = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
+        if query3 != []:
+            return render_template('dashboard.html', info = query3)
+    return render_template('login.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

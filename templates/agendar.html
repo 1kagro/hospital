@@ -10,11 +10,42 @@
 <body>
     <nav>
         <ul>
-            <li id="user-name"><a href="">Nombre de usuario</a></li>
+            {% if info %}
+            <li id="user-name"><a href="#">{{ info[0][0] }}</a> <a href="{{ url_for('logout') }}">Salir</a></li>
+            {% endif %}
         </ul>
     </nav>
     <main>
-        <div class="calendar cont"></div>
+        <div class="calendar cont">
+            <form action="" method="post" name="c">
+                <label for="tipo-cita">Tipo de cita</label>
+                <br />
+                <select name="tipo-cita" id="tipe-cita" class="inpt-reg" required>
+                    <option></option>
+                    <option value="Consulta externa">Consulta externa</option>
+                    <option value="Especialista">Especialista</option>
+                    <option value="Odontología">Odontología</option>
+                    <option value="Pediatría">Pediatría</option>
+                </select>
+                <button type="submit">Consultar</button>
+            </form>
+            <form action="" method="post" name = "s">
+                <label for="medico">Nombre del medico</label>
+                <br />
+                <select name="medico" id="medico" class="inpt-reg" required>
+                    {% if medicos %}
+                    {% for medico in medicos %}
+                        <option value = "{{ medico[0] ~ ' ' ~ medico[1] }}"> {{ medico[0] + " " + medico[1] }} </option>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+                <br />
+                <label for="date">Fecha</label>
+                <input type="datetime-local" name="datetime-local" id="datetime-local">
+                <br />
+                <button type="submit">Agendar cita</button>
+            </form>
+        </div>
         <div class="calendar-info cont"></div>
         <div class="comentario cont"></div>
     </main>

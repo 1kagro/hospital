@@ -19,7 +19,6 @@ def consultarTabla(nombre, condicion):
         query = 'SELECT * FROM {}'.format(nombre)
     else:
         query = 'SELECT * FROM {} WHERE {}'.format(nombre, condicion)
-    
     cursor.execute(query)
     
     datos = cursor.fetchall()
@@ -94,12 +93,39 @@ def registrarP(nombre, t_id, n_id, birthday, email, phone_number, passw):
         query = 'INSERT INTO pacientes (nombres, apellidos, tipoID, IDp, "password", edad, sexo, email, fech_ingreso) VALUES ("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")'.format(nombres, apellidos, t_id, n_id, passhash, edad, "NA", email, fech_ingreso)
         cursor.execute(query)
         conexion.commit()
+        print(query)
         session['id'] = query[0][3]
         session['email'] = query[0][7]
     else:
         print("error, cedula registrada")
     conexion.close()
 
+def agendarCita(nombre, esp, date, idp):
+    conexion = conectar()
+    cursor = conexion.cursor()
+    
+    nombre_v = nombre.split(" ")
+    if len(nombre_v) == 4:
+        nombres = nombre_v[0] + " " + nombre_v[1]
+        apellidos = nombre_v[2] + " " +nombre_v[3]
+    elif len(nombre_v) == 3:
+        nombres = nombre_v[0]
+        apellidos = nombre_v[1] + " " +nombre_v[2]
+    elif len(nombre_v) == 2:
+        nombres = nombre_v[0]
+        apellidos = nombre_v[1]
+    else:
+        nombres = nombre_v[0]
+        apellidos = ""
+    print(nombres, apellidos)
+    idmedico = consularColumna("IDm", "medicos", "nombres = '{}' AND apellidos = '{}'".format(nombres, apellidos))
+    if consultarTabla("citas", "fechora = '{}' AND medico = {}".format(date, idmedico[0][0])) == []:
+        query = 'INSERT INTO citas (paciente, medico, fechora, estado) VALUES ("{}", "{}", "{}", "{}")'.format(idp, idmedico[0][0], date, "agendado")
+        cursor.execute(query)
+        conexion.commit()
+    
+    
+    
 """ def checkpass(id, password):
     passwordbd = consularColumna("password", "pacientes", "IDp = {}".format(id))
     if check_password_hash() """

@@ -5,7 +5,10 @@ passhash = generate_password_hash(password, method='pbkdf2:sha256', salt_length=
 
 print(passhash)
 print(check_password_hash("pbkdf2:sha256:260000$O8jZFkhF$9d11deed81fecf44e89021a995a44f859463528819f779d2e0b5815a3a0694b4", "hola"))
-nombre = "Fabian"
+
+
+
+""" nombre = "Fabian"
 nombre_v = nombre.split(" ")
 if len(nombre_v) == 4:
     nombres = nombre_v[0] + " " + nombre_v[1]
@@ -43,4 +46,4 @@ def age(born):
     elif(int(listxd[1]) > listTemp[0][1]): 
         return listTemp[0][2] - int(listxd[2])-1
 
-print(age("2002-05-04"))
+print(age("2002-05-04")) """
