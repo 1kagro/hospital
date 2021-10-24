@@ -15,45 +15,73 @@ nav {
     padding: 15px;
     padding-right: 50px;
 }
-nav ul {
-    list-style: none;
+#user-nombre{
+    margin-left: 0;
 }
+nav ul {
+    list-style: none;    
+}
+nav ul li a {
+    margin-left: 44px;
+}
+
 a {
     text-decoration: none;
 }
 
 .btn {
-    background-color: #59B661;
-    position: absolute;
+    background-color: #59B661;    
     height: 40px;
     border-radius: 22px;
     padding: 11px;
-    color: white;
+    color: white;    
+    
 }
 
-.cont {
-    position: absolute;
+.cont {    
+    margin: auto;
+    margin-top: 50px;
+    padding: 20px;
     border: 2px solid whitesmoke;
     background-color: white;
     border-radius: 22px;
+    gap: 1em;
+    
+}
+h3{
+    text-align: center;
+    color: #59B661;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+.inpt-reg{
+    margin-bottom:20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+button{
+    background-color: hsl(125, 39%, 53%);    
+    height: 30px;
+    border-radius: 22px;    
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+    border: none;
+    width: 110px;
+
+}
+#agendar{
+    margin-top: 20px;
+    width: 105px;
+}
+#datetime-local{
+    font-size: 20px;
 }
 .calendar {
-    width: 327px;
-    height: 365px;
-    margin-left: 142px;
-    margin-top: 10px;
-}
-
-.calendar-info {
-    width: 700px;
-    height: 365px;
-    margin-left: 572px;
-    margin-top: 10px;
-}
-
-.comentario {
-    width: 1129px;
-    height: 200px;
-    margin-top: 402px;
-    margin-left: 142px;
+    width: 450px;
+    height: 350px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    /* margin-left: 142px;
+    margin-top: 10px; */
 }
