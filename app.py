@@ -84,12 +84,13 @@ def register():
         t_id = request.form['tipo-id']
         n_id = request.form['n-id']
         birthday = request.form['birthday']
+        genero = request.form['genero']
         email = request.form['email']
         phone_number = request.form['celular']
         password = request.form['pass']
         password2 = request.form['pass2']
         
-        db.registrarP(name, t_id, n_id, birthday, email, phone_number, password)
+        db.registrarP(name, t_id, n_id, birthday, email, phone_number, password, genero)
         
         return render_template('login.html')
 

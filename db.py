@@ -64,7 +64,7 @@ def age(born):
         return listTemp[0][2] - int(listxd[2])-1
 
     
-def registrarP(nombre, t_id, n_id, birthday, email, phone_number, passw):
+def registrarP(nombre, t_id, n_id, birthday, email, phone_number, passw, genero):
     conexion = conectar()
     cursor = conexion.cursor()
     
@@ -90,12 +90,11 @@ def registrarP(nombre, t_id, n_id, birthday, email, phone_number, passw):
     edad = age(birthday)
     print(consultarTabla("pacientes", "IDp = {}".format(n_id)))
     if consultarTabla("pacientes", "IDp = {}".format(n_id)) == []:
-        query = 'INSERT INTO pacientes (nombres, apellidos, tipoID, IDp, "password", edad, sexo, email, fech_ingreso) VALUES ("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")'.format(nombres, apellidos, t_id, n_id, passhash, edad, "NA", email, fech_ingreso)
+        query = 'INSERT INTO pacientes (nombres, apellidos, tipoID, IDp, "password", edad, sexo, email, fech_ingreso, celular) VALUES ("{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}", "{}")'.format(nombres, apellidos, t_id, n_id, passhash, edad, genero, email, fech_ingreso, phone_number)
         cursor.execute(query)
         conexion.commit()
-        print(query)
-        session['id'] = query[0][3]
-        session['email'] = query[0][7]
+        session['id'] = n_id
+        session['email'] = email
     else:
         print("error, cedula registrada")
     conexion.close()
