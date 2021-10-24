@@ -11,12 +11,13 @@
     <nav>
         <ul>
             {% if info %}
-            <li id="user-name"><a href="#">{{ info[0][0] }}</a> <a href="{{ url_for('logout') }}">Salir</a></li>
+            <li id="user-name">Bienvenido, <a id="user-nombre" href="{{ url_for('user') }}">{{ info[0][0] }}</a> <a href="{{ url_for('logout') }}">Salir</a></li>
             {% endif %}
         </ul>
     </nav>
     <main>
         <div class="calendar cont">
+            <h3>AGENDAMIENTO DE CITA</h3>
             <form action="" method="post" name="c">
                 <label for="tipo-cita">Tipo de cita</label>
                 <br />
@@ -27,7 +28,7 @@
                     <option value="Odontología">Odontología</option>
                     <option value="Pediatría">Pediatría</option>
                 </select>
-                <button type="submit">Consultar</button>
+                <button id="consultar" type="submit">Consultar</button>
             </form>
             <form action="" method="post" name = "s">
                 <label for="medico">Nombre del medico</label>
@@ -43,11 +44,9 @@
                 <label for="date">Fecha</label>
                 <input type="datetime-local" name="datetime-local" id="datetime-local">
                 <br />
-                <button type="submit">Agendar cita</button>
+                <button id="agendar" type="submit">Agendar cita</button>
             </form>
         </div>
-        <div class="calendar-info cont"></div>
-        <div class="comentario cont"></div>
     </main>
 </body>
 </html>

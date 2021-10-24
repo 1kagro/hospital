@@ -1,1 +1,1 @@
-[], [], []
+return render_template('perfil.html',info=query)

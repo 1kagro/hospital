@@ -119,8 +119,10 @@ def login_requered(view):
 
 @app.route('/usuario', methods=['GET', 'POST'])
 def user():
+    n_id = session['id']
+    query = db.consultarTabla("pacientes", "IDp = {}".format(n_id))    
     #user_id = request.form['id']
-    return render_template('perfil.html')
+    return render_template('perfil.html',info=query)
 
 @app.route('/agendar', methods=['GET', 'POST'])
 def agendar():
