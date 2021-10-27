@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfil.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            {% if info %}
+            <li id="user-name"><a href="#">{{ info[0][0] }}</a> <a href="{{ url_for('logout') }}">Salir</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        <a href="{{ url_for('agendar') }}"><p class="btn" id="s-cita">Solicitar cita</p></a>
+        <div class="user">
+            <div class="img-user">
+                <img src="" alt="Foto de perfil del usuario">
+            </div>
+            {% if info %}
+                <p id="name" class="user-info">{{ info[0][0] + " " + info[0][1] }}</p>
+            {% endif %}
+            <p id="date" class="user-info">{{ info[0][8] }}</p>
+            <div class="tags" class="user-info">
+                <p>{{ info[0][5] }} años</p>
+                <p>{{ info[0][6] }}</p>
+            </div>
+            <hr class="linea">
+            <div class="left">
+                <p class="soft">Contacto</p>
+                <div class="soft">Celular</div>
+                <p>{{ info[0][9] }}</p>
+                <div class="soft">Correo electronico</div>
+                <p> {{ info[0][7] }} </p>
+                <div class="soft">Fecha de ingreso</div>
+                <p> {{ info[0][8] }} </p>
+            </div>
+            <div class="right">
+                <div class="map"></div>
+                <div class="full-screen">
+                    <p>Ver en pantalla completa</p>
+                </div>
+            </div>
+        </div>
+        <div class="historiaClinica user">
+            <p class="tittle">Historia Clinica</p>
+            <p>Diabetes</p>
+            <p>Diabetes</p>
+            <p>Diabetes</p>
+        </div>
+        <div class="doctor user">
+            {% if info2 %}
+            <div class="img-user">
+                <img src="" alt="Foto de perfil del docotr">
+            </div>
+            <p id="name" class="user-info">{{ info2[0][0] + " " + info2[0][1] }}</p>
+            <p id="date" class="user-info">Enfermero</p>
+            <p class="btn">5.0</p>
+            {% endif %}
+        </div>
+        <div class="notas doctor">
+            <p class="tittle">Notas del medico para el paciente</p>
+            <p id="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                Error eaque, ratione debitis culpa distinctio corporis, 
+                quisquam iusto, odio facere reiciendis laborum temporibus 
+                dicta quasi. Consequatur cupiditate necessitatibus omnis 
+                ducimus doloremque!</p>
+        </div>
+    </main>
+</body>
+</html>

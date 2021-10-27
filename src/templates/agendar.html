@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar cita</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/calendar.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            {% if info %}
+            <li id="user-name">Bienvenido, <a id="user-nombre" href="{{ url_for('user') }}">{{ info[0][0] }}</a> <a href="{{ url_for('logout') }}">Salir</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <main>
+        <div class="calendar cont">
+            <h3>AGENDAMIENTO DE CITA</h3>
+            <form action="" method="post" name="c">
+                <label for="tipo-cita">Tipo de cita</label>
+                <br />
+                <select name="tipo-cita" id="tipe-cita" class="inpt-reg" required>
+                    <option></option>
+                    <option value="Consulta externa">Consulta externa</option>
+                    <option value="Especialista">Especialista</option>
+                    <option value="Odontología">Odontología</option>
+                    <option value="Pediatría">Pediatría</option>
+                </select>
+                <button id="consultar" type="submit">Consultar</button>
+            </form>
+            <form action="" method="post" name = "s">
+                <label for="medico">Nombre del medico</label>
+                <br />
+                <select name="medico" id="medico" class="inpt-reg" required>
+                    {% if medicos %}
+                    {% for medico in medicos %}
+                        <option value = "{{ medico[0] ~ ' ' ~ medico[1] }}"> {{ medico[0] + " " + medico[1] }} </option>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+                <br />
+                <label for="date">Fecha</label>
+                <input type="datetime-local" name="datetime-local" id="datetime-local">
+                <br />
+                <button id="agendar" type="submit">Agendar cita</button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
