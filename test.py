@@ -1,6 +1,6 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import date
-password = "holacomoeasdasd23sadasdsdsfdgfdgdsa123asdsa@stas"
+password = "1234"
 passhash = generate_password_hash(password, method='pbkdf2:sha256', salt_length=8)
 
 print(passhash)
