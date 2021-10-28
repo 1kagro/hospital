@@ -72,3 +72,24 @@
     height: vh;
     margin: auto;
 }
+
+/* -------- ------------------*/
+a {
+    text-decoration: none;
+}
+
+.btn {
+    background-color: #59B661;
+    position: absolute;
+    height: 40px;
+    border-radius: 22px;
+    padding: 11px;
+    color: white;
+}
+
+#s-cita {
+    margin-top: -60px;
+    margin-left: 466px;
+    width: 129px;
+    text-align: center;
+}

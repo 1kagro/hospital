@@ -99,6 +99,42 @@ def registrarP(nombre, t_id, n_id, birthday, email, phone_number, passw, genero)
         print("error, cedula registrada")
     conexion.close()
 
+def registrarM(nombre, t_id, n_id, passw, especialidad, birthday, email, genero, phone_number, error):
+    conexion = conectar()
+    cursor = conexion.cursor()
+    
+    nombre_v = nombre.split(" ")
+    if len(nombre_v) == 4:
+        nombres = nombre_v[0] + " " + nombre_v[1]
+        apellidos = nombre_v[2] + " " +nombre_v[3]
+    elif len(nombre_v) == 3:
+        nombres = nombre_v[0]
+        apellidos = nombre_v[1] + " " +nombre_v[2]
+    elif len(nombre_v) == 2:
+        nombres = nombre_v[0]
+        apellidos = nombre_v[1]
+    else:
+        nombres = nombre_v[0]
+        apellidos = ""
+    
+    fech_ingreso = str(date.today().year) + "-" + str(date.today().month) + "-" + str(date.today().day)
+    
+    print(fech_ingreso)
+    passhash = generate_password_hash(passw, method='pbkdf2:sha256', salt_length=8)
+    
+    edad = age(birthday)
+    print(consultarTabla("medicos", "IDp = {}".format(n_id)))
+    if consultarTabla("medicos", "IDp = {}".format(n_id)) == []:
+        query = 'INSERT INTO medicos (nombres, apellidos, tipoID, IDm, "password", especialidad) VALUES ("{}", "{}", "{}", "{}", "{}", "{}")'.format(nombres, apellidos, t_id, n_id, passhash, especialidad)
+        cursor.execute(query)
+        conexion.commit()
+        session['id'] = n_id
+        session['email'] = email
+    else:
+        print("error, cedula registrada")
+        error = "error, cedula registrada"
+    conexion.close()
+
 def agendarCita(nombre, esp, date, idp):
     conexion = conectar()
     cursor = conexion.cursor()

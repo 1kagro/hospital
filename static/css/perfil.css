@@ -132,7 +132,7 @@ a {
     background-color: white;
     border-radius: 22px;
     width: 85.5vw;
-    
+
 }
 
 .doctor .btn{
@@ -170,3 +170,30 @@ p#esp {
     margin-left: 38px;
     margin-top: 25px;
 }
+
+table {
+    width: 50%;
+    position: absolute;
+    margin-left: 768px;
+    margin-top: 126px;
+    background: white;
+    text-align: left;
+}
+
+
+thead {
+    background: darkseagreen;
+    border-bottom: solid 5px black;
+    color: white;
+}
+
+tr:nth-child(even){
+    background-color: #ddd;
+}
+
+tr:hover {
+    background-color: #3CC663;
+}
+
+
+

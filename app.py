@@ -30,41 +30,40 @@ def home():
                     query2 = db.consultarTabla("medicos", "IDp = {}".format(n_id))
                     print(query2)
                     dato = db.consultarTabla("citas", "paciente = {} ".format(n_id))
+                    especialidad = db.consultarTabla("medicos", None)
+                    print(":", dato)
+                    print("::", especialidad)
                     #return redirect(url_for('user', info = query))
-                    return render_template('perfil.html', info = query, info2 = query2, datos = dato)
+                    return render_template('perfil.html', info = query, info2 = query2, datos = dato, esp = especialidad)
                 else:
                     flash(error)
+        else:
+            query = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
+            
+            if query != []:
+                passwordbd = query[0][4]
+                if passwordbd != []:
+                    if check_password_hash(passwordbd, password):
+                        session['loggedin'] = True
+                        session['id'] = query[0][3]
+                        print(query[0][4])
+                        return render_template('dashboard.html', info = query)
+                    else:
+                        flash(error)
             else:
-                query = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
-                
+                query = db.consultarTabla("medicos", "IDm = {}".format(n_id))
                 if query != []:
                     passwordbd = query[0][4]
-                    if passwordbd != []:
-                        if check_password_hash(passwordbd, password):
-                            session['loggedin'] = True
-                            session['id'] = query[0][3]
-                            print(query[0][4])
-                            return render_template('dashboard.html', info = query)
-                        else:
-                            flash(error)
+                    if check_password_hash(passwordbd, password):
+                        session['loggedin'] = True
+                        session['id'] = query[0][3]
+                        print(query[0][4])
+                        print("MEDICO INCIÓ SESIÓN")
+                        #return render_template('medicos.html', info = query)
                     else:
-                        query = db.consultarTabla("medicos", "IDm = {}".format(n_id))
-                        if query != []:
-                            passwordbd = query[0][4]
-                            if check_password_hash(passwordbd, password):
-                                session['loggedin'] = True
-                                session['id'] = query[0][3]
-                                print(query[0][4])
-                                print("MEDICO INCIÓ SESIÓN")
-                                #return render_template('medicos.html', info = query)
-                            else:
-                                flash(error)
-                        else:
-                            flash('El usuario no existe')
+                        flash(error)
                 else:
                     flash('El usuario no existe')
-        else:
-            flash('El usuario no existe')     
 
         return render_template('login.html')
          
@@ -116,6 +115,27 @@ def register():
         
         return render_template('login.html')
 
+@app.route('/register_M', methods=['GET', 'POST'])
+def registerM():
+    if(request.method == "GET"):
+        return render_template('registerM.html')
+
+    else:
+        error = ""
+        name = request.form['name']
+        t_id = request.form['tipo-id']
+        n_id = request.form['n-id']
+        birthday = request.form['birthday']
+        genero = request.form['genero']
+        email = request.form['email']
+        phone_number = request.form['celular']
+        password = request.form['pass']
+        password2 = request.form['pass2']
+        especialidad = request.form['especialidad']
+        db.registrarM(name, t_id, n_id, password, especialidad, birthday, email, genero, phone_number, error)
+        
+        return render_template('login.html')
+
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session.pop('loggedin', None)
@@ -142,9 +162,11 @@ def login_requered(view):
 @app.route('/usuario', methods=['GET', 'POST'])
 def user():
     n_id = session['id']
-    query = db.consultarTabla("pacientes", "IDp = {}".format(n_id))    
+    query = db.consultarTabla("pacientes", "IDp = {}".format(n_id))
+    dato = db.consultarTabla("citas", "paciente = {} ".format(n_id))
+    especialidad = db.consultarTabla("medicos", None)
     #user_id = request.form['id']
-    return render_template('perfil.html',info=query)
+    return render_template('perfil.html',info=query, datos = dato, esp = especialidad)
 
 @app.route('/agendar', methods=['GET', 'POST'])
 def agendar():

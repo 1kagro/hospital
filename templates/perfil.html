@@ -46,12 +46,12 @@
                 </div>
             </div>
         </div>
-        <div class="historiaClinica user">
+        <!-- <div class="historiaClinica user">
             <p class="tittle">Historia Clinica</p>
             <p>Diabetes</p>
             <p>Diabetes</p>
             <p>Diabetes</p>
-        </div>
+        </div> -->
         <!-- <div class="doctor user">
             {% if info2 %}
             <div class="img-user">
@@ -66,7 +66,8 @@
              <thead>
                  <tr>
                      <td>Número de referencia</td>
-                     <td>Medico asignado</td>
+                     <td>No. Cedula del medico asignado</td>
+                     <td>Especialidad</td>
                      <td>Fecha y hora</td>
                      <td>Estado</td>
                  </tr>
@@ -74,7 +75,15 @@
              <tbody>
                  {% for dato in datos %}
                     <tr>
-                        <td>{{ dato }}</td>
+                        <td>{{ dato[0] }}</td>
+                        <td>{{ dato[2] }}</td>
+                        {% for espe in esp %}
+                        {% if espe[3] == dato[2]%}
+                            <td>{{ espe[6]}}</td>
+                        {% endif %}
+                        {% endfor %}
+                        <td>{{ dato[3] }}</td>
+                        <td>{{ dato[4] }}</td>
                     </tr>
                  {% endfor %}
              </tbody>

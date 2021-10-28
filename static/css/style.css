@@ -195,7 +195,6 @@ section#datos-g .linea {
     text-align: center;
     color: red;
 }
-
 /* Eliminar flechas de input type number */
 
 input[type=number]::-webkit-inner-spin-button,
