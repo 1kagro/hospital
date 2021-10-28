@@ -52,7 +52,7 @@
             <p>Diabetes</p>
             <p>Diabetes</p>
         </div>
-        <div class="doctor user">
+        <!-- <div class="doctor user">
             {% if info2 %}
             <div class="img-user">
                 <img src="" alt="Foto de perfil del docotr">
@@ -61,15 +61,24 @@
             <p id="date" class="user-info">Enfermero</p>
             <p class="btn">5.0</p>
             {% endif %}
-        </div>
-        <div class="notas doctor">
-            <p class="tittle">Notas del medico para el paciente</p>
-            <p id="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
-                Error eaque, ratione debitis culpa distinctio corporis, 
-                quisquam iusto, odio facere reiciendis laborum temporibus 
-                dicta quasi. Consequatur cupiditate necessitatibus omnis 
-                ducimus doloremque!</p>
-        </div>
+        </div> -->
+        <table>
+             <thead>
+                 <tr>
+                     <td>Número de referencia</td>
+                     <td>Medico asignado</td>
+                     <td>Fecha y hora</td>
+                     <td>Estado</td>
+                 </tr>
+             </thead>
+             <tbody>
+                 {% for dato in datos %}
+                    <tr>
+                        <td>{{ dato }}</td>
+                    </tr>
+                 {% endfor %}
+             </tbody>
+        </table>
     </main>
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, redirect, session, g
+from flask import Flask, render_template, url_for, request, redirect, session, g, flash
 from werkzeug.security import check_password_hash, generate_password_hash
 
 import db
@@ -18,33 +18,55 @@ def home():
         passwordbd = db.consularColumna("password", "pacientes", "IDp = {}".format(n_id))
         query = db.consultarTabla("pacientes", "IDp = {}".format(n_id))
         
-        error = ""
+        error = 'Usuario y/o contraseña inválida'
         
-        if passwordbd != []:
-            if check_password_hash(passwordbd[0][0], password):
-                session['loggedin'] = True
-                session['id'] = query[0][3]
-                session['email'] = query[0][7]
-                print(query)
-                query2 = db.consultarTabla("medicos", "IDp = {}".format(n_id))
-                print(query2)
-                
-                #return redirect(url_for('user', info = query))
-                return render_template('perfil.html', info = query, info2 = query2)
-            else:
-                error = 'Usuario y/o contraseña inválida'
-        else:
-            query = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
-            
-            if query != []:
-                passwordbd = query[0][4]
-                if check_password_hash(passwordbd, password):
+        if query != []:
+            if passwordbd != []:
+                if check_password_hash(passwordbd[0][0], password):
                     session['loggedin'] = True
                     session['id'] = query[0][3]
-                    print(query[0][4])
-                    return render_template('dashboard.html', info = query)
+                    session['email'] = query[0][7]
+                    print(query)
+                    query2 = db.consultarTabla("medicos", "IDp = {}".format(n_id))
+                    print(query2)
+                    dato = db.consultarTabla("citas", "paciente = {} ".format(n_id))
+                    #return redirect(url_for('user', info = query))
+                    return render_template('perfil.html', info = query, info2 = query2, datos = dato)
+                else:
+                    flash(error)
+            else:
+                query = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
+                
+                if query != []:
+                    passwordbd = query[0][4]
+                    if passwordbd != []:
+                        if check_password_hash(passwordbd, password):
+                            session['loggedin'] = True
+                            session['id'] = query[0][3]
+                            print(query[0][4])
+                            return render_template('dashboard.html', info = query)
+                        else:
+                            flash(error)
+                    else:
+                        query = db.consultarTabla("medicos", "IDm = {}".format(n_id))
+                        if query != []:
+                            passwordbd = query[0][4]
+                            if check_password_hash(passwordbd, password):
+                                session['loggedin'] = True
+                                session['id'] = query[0][3]
+                                print(query[0][4])
+                                print("MEDICO INCIÓ SESIÓN")
+                                #return render_template('medicos.html', info = query)
+                            else:
+                                flash(error)
+                        else:
+                            flash('El usuario no existe')
+                else:
+                    flash('El usuario no existe')
+        else:
+            flash('El usuario no existe')     
 
-        return render_template('login.html', error=error)
+        return render_template('login.html')
         
         """ if((n_id == 12345678) and (password == "Usuario1")):
             return redirect(url_for('user'))
@@ -99,7 +121,7 @@ def logout():
     session.pop('loggedin', None)
     session.pop('id', None)
     session.pop('username', None)
-    return render_template('login.html')
+    return redirect( url_for('home'))
 
 @app.before_request
 def load_logged_in_user():

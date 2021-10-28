@@ -185,6 +185,17 @@ section#datos-g .linea {
     margin-bottom: 10px;
 }
 
+/* ------ ERROR -------   */
+.error {
+    width: 318px;
+    position: absolute;
+    margin-top: 441px;
+}
+.error p {
+    text-align: center;
+    color: red;
+}
+
 /* Eliminar flechas de input type number */
 
 input[type=number]::-webkit-inner-spin-button,

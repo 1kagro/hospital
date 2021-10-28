@@ -18,6 +18,15 @@
                 <p id="text-ingresar">Ingresa tus credenciales de acceso</p>
                 <input type="number" name="id" id="id" placeholder="Documento de identidad" class="inpt" minlength="5" required>
                 <input type="password" name="password" id="pass" placeholder="Contraseña" class="inpt" required>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages%}
+                <div class="error">
+                    <p>{{ message }}</p>
+                </div>
+                {% endfor %}
+                {% endif%}
+                {% endwith %}
                 <button type="submit" class="button" id="button">Ingresar</button>
             </form>
             <p id="singup">¿No tienes cuenta? <a href="{{ url_for('register') }}">Registrate</a></p>
