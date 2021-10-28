@@ -67,7 +67,7 @@ def home():
             flash('El usuario no existe')     
 
         return render_template('login.html')
-        
+         
         """ if((n_id == 12345678) and (password == "Usuario1")):
             return redirect(url_for('user'))
         elif((n_id == 99999999) and (password == "Administrador1")):

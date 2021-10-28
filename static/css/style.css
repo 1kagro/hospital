@@ -186,7 +186,7 @@ section#datos-g .linea {
 }
 
 /* ------ ERROR -------   */
-.error {
+.error { 
     width: 318px;
     position: absolute;
     margin-top: 441px;
