@@ -35,9 +35,9 @@ def home():
                 error = 'Usuario y/o contraseña inválida'
         else:
             query = db.consultarTabla("superadministradores", "IDsp = {}".format(n_id))
-            passwordbd = query[0][4]
             
             if query != []:
+                passwordbd = query[0][4]
                 if check_password_hash(passwordbd, password):
                     session['loggedin'] = True
                     session['id'] = query[0][3]
